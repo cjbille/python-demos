@@ -1,5 +1,5 @@
 [project]
-name = "python-demos"
+name = "python-s3"
 version = "1.0.0-dev"
 requires-python = ">=3.9"
 readme = "README.md"

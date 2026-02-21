@@ -1,10 +1,10 @@
 # Python Demos
-> A project consisting of Python demos
+> A project consisting of Python projects related so AWS and serverless
 
 ## Create Python Venv
 ```shell
 # cd to individual project
-cd <project name>
+cd <project-name>
 
 # create venv
 python3 -m venv .venv
