@@ -1,19 +1,16 @@
-# Python Demos
-> A project consisting of Python projects related so AWS and serverless
+# Python S3
+> S3 Python Project
 
 ## Create Python Venv
 ```shell
-# cd to individual project
-cd <project-name>
-
 # create venv
 python3 -m venv .venv
 
-# upgrade pip
-pip install --upgrade pip
-
 # activate venv
 source .venv/bin/activate
+
+# upgrade pip
+pip install --upgrade pip
 
 # leave venv
 deactivate
@@ -26,4 +23,9 @@ pip install -e ".[dev]"
 
 # prod only dependencies
 pip install .
+```
+
+## Test
+```shell
+pytest
 ```
