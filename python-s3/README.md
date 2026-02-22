@@ -4,7 +4,7 @@
 ## Create Python Venv
 ```shell
 # create venv
-python3 -m venv .venv
+python3.14 -m venv .venv
 
 # activate venv
 source .venv/bin/activate
