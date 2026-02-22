@@ -1,4 +1,4 @@
-from python_s3.module_s3 import add
+from python_s3_demo.s3_module import add
 
 def test_add_positive_numbers():
     a = 10
