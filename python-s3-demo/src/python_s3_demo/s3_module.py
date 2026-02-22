@@ -24,7 +24,7 @@ def build_file_name(header_name: str | None) -> str:
     return f"{file_name}.tar"
 
 @app.post("/upload/s3", status_code=status.HTTP_202_ACCEPTED)
-async def upload_file(request: Request, file_name_header: Annotated[str | None, Header(alias="filename")] = None) -> dict:
+async def upload_file(request: Request, file_name_header: Annotated[str | None, Header(alias="filename")] = None) -> dict[str, str] | Response:
     file_name = build_file_name(file_name_header)
     try:
         logger.info(f"Received filename: {file_name}")
