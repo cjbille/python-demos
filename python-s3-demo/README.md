@@ -32,8 +32,8 @@ pytest
 
 ## Test with Curl
 ```shell
-curl -X POST \
+curl -i -X POST \
      -H "filename: archive" \
-     --data-binary @src/test/resources/archive.tar \
+     --data-binary @/Users/cjbille/Documents/Projects/quarkus-demos/quarkus-s3-demo/src/test/resources/archive.tar \
      http://localhost:8100/upload/s3
 ```

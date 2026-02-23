@@ -20,7 +20,7 @@ s3_client = boto3.client("s3")
 app = FastAPI()
 
 @app.post("/upload/s3", status_code=status.HTTP_202_ACCEPTED)
-async def upload_file(request: Request, file_name_header: Annotated[str | None, Header(alias="filename")] = None):
+async def upload_file(request: Request, file_name_header: Annotated[str | None, Header(alias="filename")] = None) -> dict[str, str]:
     file_name = build_file_name(file_name_header)
     try:
         logger.info(f"Received filename: {file_name}")
