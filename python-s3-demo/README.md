@@ -29,3 +29,11 @@ pip install .
 ```shell
 pytest
 ```
+
+## Test with Curl
+```shell
+curl -X POST \
+     -H "filename: archive" \
+     --data-binary @src/test/resources/archive.tar \
+     http://localhost:8100/upload/s3
+```
