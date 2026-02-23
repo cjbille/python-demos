@@ -1,46 +1,39 @@
-from fastapi.testclient import TestClient
+import os
 
-# 1. Create the FastAPI test client (like Java's MockMvc)
+import boto3
+import pytest
+from fastapi.testclient import TestClient
+from moto import mock_aws
+
+from python_s3_demo.s3_module import app
+
 client = TestClient(app)
 
-# 2. Setup standard fake AWS credentials to prevent accidental live uploads
 @pytest.fixture(scope="function")
 def aws_credentials():
-    os.environ["AWS_ACCESS_KEY_ID"] = "testing"
-    os.environ["AWS_SECRET_ACCESS_KEY"] = "testing"
-    os.environ["AWS_SECURITY_TOKEN"] = "testing"
-    os.environ["AWS_SESSION_TOKEN"] = "testing"
+    os.environ["AWS_ACCESS_KEY_ID"] = "test-access-key-id"
+    os.environ["AWS_SECRET_ACCESS_KEY"] = "test-secret-access-key"
+    os.environ["AWS_SECURITY_TOKEN"] = "test-security-token"
+    os.environ["AWS_SESSION_TOKEN"] = "test-session-token"
     os.environ["AWS_DEFAULT_REGION"] = "us-east-1"
-    os.environ["S3_BUCKET"] = "test-bucket"
+    os.environ["S3_BUCKET"] = "coffee"
 
-# 3. Create the fake S3 bucket in RAM before the test runs
 @pytest.fixture(scope="function")
 def s3_mock(aws_credentials):
     with mock_aws():
-        # Create a real boto3 client, but it talks to Moto!
         s3 = boto3.client("s3", region_name="us-east-1")
-        # We must create the bucket in the fake AWS account first
-        s3.create_bucket(Bucket="test-bucket")
+        s3.create_bucket(Bucket="coffee")
         yield s3
 
-# 4. The actual test
-def test_successful_s3_upload(s3_mock):
-    # The dummy file content
-    fake_file_content = b"Hello, this is a fake tar file!"
-
-    # Send the fake HTTP POST request
+def test_upload_file_valid_tar_returns_202(s3_mock):
+    mock_file_content = "Hello, this is a mock tar file!".encode("utf-8")
     response = client.post(
         url="/upload/s3",
-        content=fake_file_content,
-        headers={"filename": "my-test-file.tar"} # Our custom header!
+        content=mock_file_content,
+        headers={"filename": "mock-test-file"}
     )
-
-    # Assert the HTTP response
     assert response.status_code == 202
     assert response.json() == {"message": "Upload accepted"}
-
-    # Assert the file ACTUALLY made it into the fake S3 bucket
-    saved_object = s3_mock.get_object(Bucket="test-bucket", Key="my-test-file.tar")
+    saved_object = s3_mock.get_object(Bucket="coffee", Key="mock-test-file.tar")
     saved_body = saved_object["Body"].read()
-
-    assert saved_body == fake_file_content
+    assert saved_body == mock_file_content

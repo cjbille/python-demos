@@ -7,7 +7,7 @@
 cd <project-name>
 
 # create venv
-python3 -m venv .venv
+python3.14 -m venv .venv
 
 # upgrade pip
 pip install --upgrade pip
