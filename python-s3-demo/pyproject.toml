@@ -5,8 +5,9 @@ requires-python = ">=3.9"
 readme = "README.md"
 dependencies = [
     "boto3",
-    "fastapi",
-    "uvicorn"
+    "fastapi[standard]",
+    "httpx",
+    "moto",
 ]
 
 [project.optional-dependencies]
