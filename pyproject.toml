@@ -1,5 +1,5 @@
 [project]
-name = "python-s3"
+name = "python-demos"
 version = "1.0.0-dev"
 requires-python = ">=3.9"
 readme = "README.md"
@@ -7,7 +7,7 @@ dependencies = [
     "boto3",
     "fastapi[standard]",
     "httpx",
-    "moto",
+    "moto"
 ]
 
 [project.optional-dependencies]

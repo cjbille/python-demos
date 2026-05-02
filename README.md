@@ -3,9 +3,6 @@
 
 ## Create Python Venv
 ```shell
-# cd to individual project
-cd <project-name>
-
 # create venv
 python3.14 -m venv .venv
 
