@@ -11,8 +11,8 @@ import boto3
 import pytest
 from fastapi.testclient import TestClient
 from moto import mock_aws
-from python_s3_demo import s3_module
-from python_s3_demo.s3_module import app
+from python_s3_demo import s3
+from python_s3_demo.s3 import app
 
 client = TestClient(app)
 
@@ -21,7 +21,7 @@ def s3_mock():
     with mock_aws():
         mock_s3_client = boto3.client("s3", region_name="us-east-1")
         mock_s3_client.create_bucket(Bucket="coffee")
-        s3_module.s3_client = mock_s3_client
+        s3.s3_client = mock_s3_client
         yield mock_s3_client
 
 def test_upload_file_valid_tar_returns_202(s3_mock):
