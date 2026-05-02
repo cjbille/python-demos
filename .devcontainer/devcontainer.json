@@ -11,7 +11,11 @@
         "PKief.material-icon-theme"
       ],
       "settings": {
-        "python.defaultInterpreterPath": "/usr/local/bin/python"
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "workbench.iconTheme": "vscode-icons",
+        "editor.minimap.enabled": false,
+        "editor.fontSize": 13,
+        "terminal.integrated.shellIntegration.enabled": false
       }
     }
   },
