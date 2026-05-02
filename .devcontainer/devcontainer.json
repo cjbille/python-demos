@@ -8,7 +8,7 @@
       "extensions": [
         "ms-python.python",
         "ms-python.vscode-pylance",
-        "PKief.material-icon-theme"
+        "vscode-icons-team.vscode-icons"
       ],
       "settings": {
         "python.defaultInterpreterPath": "/usr/local/bin/python",
