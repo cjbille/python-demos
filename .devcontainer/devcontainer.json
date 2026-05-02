@@ -13,6 +13,7 @@
       "settings": {
         "python.defaultInterpreterPath": "/usr/local/bin/python",
         "python.analysis.typeCheckingMode": "standard",
+        "python.venvFolders": ["python-dynamdb-demo", "python-s3-demo"],
         "workbench.iconTheme": "vscode-icons",
         "editor.minimap.enabled": false,
         "editor.fontSize": 13,
