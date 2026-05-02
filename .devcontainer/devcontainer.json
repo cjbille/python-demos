@@ -12,6 +12,7 @@
       ],
       "settings": {
         "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.analysis.typeCheckingMode": "standard",
         "workbench.iconTheme": "vscode-icons",
         "editor.minimap.enabled": false,
         "editor.fontSize": 13,
